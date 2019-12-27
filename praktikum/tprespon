@@ -1,0 +1,48 @@
+<?php
+
+// Pembuatan array di PHP ada 2 :
+//1. menggunakan method array()
+//2. menggunakan kurung siku []
+//~~~~~~~Bisaji digabung keduanya-------------
+
+$datas = array(
+  "buah" => [
+    1 => "wine",
+    2 => "pineapple",
+    3 => "pear"
+  ],
+  "warnah" => array(
+    1 => "hijau",
+    2 => "biru",
+    3 => "pink"
+  ),
+  "kota" => array(
+    1 => "gowa",
+    2 => "pangkep",
+    3 => "makassar"
+  )
+);
+
+// Bisa juga seperti ini
+$bio = [
+  ['nama' => 'Siti Nurhaliza', 'kelas' => 'A', 'hobby' => 'menari'],
+  ['nama' => 'Auliah', 'kelas' => 'A', 'hobby' => 'ngoding']
+];
+
+
+
+// Mencetak ke layar
+
+// echo json_encode($datas);
+// print json_encode($bio);
+
+$file = file_get_contents("http://www.belajar.local/konversi.php");
+$json = json_decode($file, true);
+
+foreach ($json as $key) {
+  if (is_array($key)) {
+    foreach ($key as $key => $value) {
+      echo $key . ' : ' . $value . '<br />';
+    }
+  }
+}
